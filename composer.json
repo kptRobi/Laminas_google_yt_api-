@@ -27,7 +27,8 @@
         "psr-4": {
             "Application\\": "module/Application/src/",
             "Maps\\": "module/Maps/src/",
-            "Youtube\\": "module/Youtube/src/"
+            "Youtube\\": "module/Youtube/src/",
+            "Flickr\\": "module/Flickr/src/"
         }
     },
     "autoload-dev": {

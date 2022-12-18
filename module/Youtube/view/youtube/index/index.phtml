@@ -31,12 +31,12 @@ $this->inlineScript()->captureEnd();
         <h1>
             Youtube
             <small><?=$this->title ?></small>
-            <a href="<?=$this->url('youtube/default', ['action' => 'search']) ?>" class="pull-right" title="Szukaj"><i class="glyphicon glyphicon-search"></i></a>
+            <a href="<?=$this->url('youtube/default', ['action' => 'search']) ?>" class="pull-right" title="Szukaj"><i class="fas fa-search"></i></a>
         </h1>
     </div>
 </div>
 
-<?php foreach($this->films as $f): ?>
+<?php foreach($this->films->items as $f): ?>
     <div class="row" style="margin-bottom: 10px;">
         <div class="col-md-2">
             <a href="#" class="player" data-id="<?= $f['id'] ?>">
@@ -47,6 +47,12 @@ $this->inlineScript()->captureEnd();
             <p>
                 Tytuł: <strong><?= $f['snippet']['title'] ?></strong><br/>
                 Wyświetleń: <strong><?= $f['statistics']['viewCount'] ?></strong><br/>
+                Tagi: <i>
+                    <?php
+                    if (!empty($f->snippet->tags) )
+                        echo(implode(", ",$f->snippet->tags));
+                    ?>
+                </i><br />
                 Komentarzy: <strong><a href="<?= $this->url('youtube/default', ['action' => 'comments', 'id' => $f['id']]) ?>" title="Pokaż komentarze" class="aShowComments"><?= $f['statistics']['commentCount'] ?></a></strong><br/>
             </p>
         </div>

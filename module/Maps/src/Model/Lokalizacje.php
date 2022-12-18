@@ -40,7 +40,7 @@ class Lokalizacje implements DbAdapter\AdapterAwareInterface
 
     public function geokoduj($adres){
         $adres = urlencode($adres);
-        $client = new Client("https://maps.googleapis.com/maps/api/geocode/json?address=$adres&key=API_KEY");
+        $client = new Client("https://maps.googleapis.com/maps/api/geocode/json?address=$adres&key=AIzaSyApBAwOqKsC5Je6Po90hTulOqadeHsQnBI");
         $client->setHeaders(['Accept-Encoding' => 'identity']);
         $response = $client->send();
         $json = Json::decode($response->getBody());

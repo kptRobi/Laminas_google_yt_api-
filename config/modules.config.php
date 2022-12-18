@@ -25,4 +25,5 @@ return [
     'Application',
     'Maps',
     'Youtube',
+    'Flickr',
 ];

@@ -6,7 +6,7 @@ use Google\Service\YouTube as GoogleYouTube;
 
 class Youtube
 {
-    const DEV_KEY = '';
+    const DEV_KEY = 'AIzaSyB_s-LXrbjdnWghWb_xHaJ8UsEMYVO0YZw';
 
     /**
      * @var \GoogleYouTube
@@ -28,7 +28,6 @@ class Youtube
         } catch (\Exception $e) {
             die($e->getMessage());
         }
-
         return $films;
     }
 
@@ -44,13 +43,18 @@ class Youtube
                 $filmIds[] = $r->getId()->getVideoId();
             }
 
-            $films = $this->youtube->videos->listVideos('id, snippet, statistics', ['id' => implode(', ', $filmIds)]);
+            $films = $this->youtube->videos->listVideos('id, snippet, statistics', ['id' => implode(',', $filmIds)]);
             $films->nextPageToken = $results->nextPageToken;
             $films->prevPageToken = $results->prevPageToken;
         } catch (\Exception $e) {
             die($e->getMessage());
         }
-
         return $films;
+    }
+
+    public function getComments($id){
+        $comments = $this->youtube->commentThreads->listCommentThreads('snippet', ['videoId' => $id]);
+        //dd($comments);
+        return $comments;
     }
 }

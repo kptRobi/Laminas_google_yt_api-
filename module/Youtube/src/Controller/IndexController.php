@@ -26,9 +26,11 @@ class IndexController extends AbstractActionController
 
     public function commentsAction()
     {
-        $view = new ViewModel(['comments' => []]);
+        $comments = "A";
+        $id = $this->params()->fromRoute('id');
+        $comments = $this->ytService->getComments($id);
+        $view = new ViewModel(['comments' => $comments]);
         $view->setTerminal(true);
-
         return $view;
     }
 

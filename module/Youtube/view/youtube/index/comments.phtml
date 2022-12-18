@@ -1,1 +1,12 @@
-Lista komentarzy...
+<ul class="list-group">
+<?php foreach($this->comments->items as $c): ?>
+    <li class="list-group-item">
+        <p class="text-left">
+        <?= date('D/M/Y h:i:s', strtotime($c->snippet->topLevelComment->snippet->updatedAt)) ?></br>
+        <b>
+    <?= $c->snippet->topLevelComment->snippet->authorDisplayName ?></b>
+    </br>
+        </p>
+    <?= $c->snippet->topLevelComment->snippet->textDisplay ?></li>
+<?php endforeach; ?>
+</ul>
